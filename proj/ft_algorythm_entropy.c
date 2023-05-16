@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algorythm_entropy.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 20:13:18 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/16 07:01:45 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/17 00:19:30 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ft_get_shadow(int **shadow, int **stacks, int start_zero, int start_one)
+void	ft_init_shadow(int **shadow, int **stacks, int start_zero, int start_one)
 {
 	int	i;
 
@@ -90,24 +90,96 @@ void	ft_get_entropy(int **stacks, int stack, int **shadow)
 		shadow[stack + 2][i] = ft_abs(ft_get_entropy_unit(stacks, shadow, stack, i));
 }
 
-void	ft_get_modifier(int **stacks, int **shadow, int stack)
+void	ft_init_modifier_diagonal(int **shadow, int **modifier)
 {
-	int i;
-	int j;
+	int	j;
+	int	i;
+	int	col;
+	int	lin;
 
-	i = stacks[2][stack];
-	while (++i < stacks[2][stack] * 2)
+	j = -1;
+	col = 0;
+	lin = 0;
+	while (++j < shadow[6][0])
 	{
-		j = 0;
-		while (++j < shadow[stack][i])
+		i = -1;
+		while (i++ < shadow[6][0])
 		{
-			if (shadow[stack][j] < 0)
-			{
-				if (shadow[stack][j] * (-1) >= )
-			}
-			
+			lin += ft_abs(modifier[j][i]);
+			col += ft_abs(modifier[i][j]);
 		}
-		
+		modifier[j][j] == col - lin;
+	}
+}
+
+int	**ft_init_modifier(int **shadow, int **modifier)
+{
+	int	**modifier;
+	int	i;
+	int	j;
+	int	k;
+
+	i = -1;
+	modifier = (int **)ft_calloc(shadow[6][0], sizeof(int *));
+	while (++i < shadow[6][0])
+		modifier[i] = (int *)ft_calloc(shadow[6][0], sizeof(int));
+	i = -1;
+	while (++i < shadow[6][0])
+	{
+		j = -1;
+		k = shadow[6][0];
+		while (++j < shadow[6][0] && --k >= 0)
+		{
+			if ((-1)j <= shadow[4][j] || k >= shadow[4][j])
+				modifier[i][j] = shadow[4][j] / ft_abs(shadow[4][j]);
+		}
+		shadow[i][i] = 0;
+	}
+	ft_init_modifier_diagonal(shadow, modifier);
+	return (modifier);
+}
+
+//SUM COLUMNS AND RETURN ARRAY
+int	*ft_sum_columns(int **shadow, int *modifier)
+{
+	int	j:
+	int	i;
+	int	*arr;
+
+	arr = (int *)ft_calloc(shadow[6][0] ,sizeof(int));
+	j = -1;
+	i = -1;
+	while (++j < shadow[6][0])
+	{
+		while (i++ < shadow[6][0])
+			arr[i] = modifier[i][j];
+	}
+	return (arr);
+}
+
+//RETURN SUM ENTROPY AND MODIFIER
+int *ft_get_modified_entropy(int **shadow)
+{
+	int	i:
+	int	*arr;
+
+	arr = (int *)ft_calloc(shadow[6][0] ,sizeof(int));
+	i = -1;
+	while (++i < shadow[6][0])
+	{
+		arr[i] = shadow[2][i] + shadow[4][i];	
+	}
+	return (arr);
+}
+
+int	*ft_get_modifier(int **stacks, int stack)
+{
+	int	i;
+
+	i = -1;
+	while (/* condition */)
+	{
+		/* code */
 	}
 	
 }
@@ -133,7 +205,7 @@ void	ft_algorythm_entropy(int **stacks, int *end)
 	{
 		if (!shadow[0])
 		{
-			ft_get_shadow(shadow, stacks, ft_lowest(stacks, 0, end), ft_lowest(stacks, 1, end));
+			ft_init_shadow(shadow, stacks, ft_lowest(stacks, 0, end), ft_lowest(stacks, 1, end));
 			entropy[0] = ft_get_entropy(stacks, 0, end, shadow);
 			entropy[1] = ft_get_entropy(stacks, 1, end, shadow);
 		}
