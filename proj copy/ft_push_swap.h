@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:03:06 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/16 06:26:16 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/14 01:30:59 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,5 @@ int ft_is_next(int a, int b, int stack);
 int ft_is_orded(int **stacks, int stack, int *end);
 int	ft_abs(int n);
 int	ft_is_in(int **stacks, int stack, int *end, int target);
-int	ft_arr_sum_abs(int *arr, int size);
 
 #endif

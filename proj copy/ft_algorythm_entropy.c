@@ -6,7 +6,7 @@
 /*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 20:13:18 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/16 07:01:45 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/16 06:17:00 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ void	ft_get_shadow(int **shadow, int **stacks, int start_zero, int start_one)
 {
 	int	i;
 
-	i = -1;
-	while (++i < 6)
-		shadow[i] = (int *)ft_calloc(stacks[2][0] + stacks[2][1] + 1, sizeof(int));
-	shadow[6] = ft_arrcpy(stacks[2], 2);
+	shadow[0] = (int *)ft_calloc(stacks[2][0] + stacks[2][1] + 1, sizeof(int));
+	shadow[1] = (int *)ft_calloc(stacks[2][0] + stacks[2][1] + 1, sizeof(int));
+	shadow[2] = ft_arrcpy(stacks[2], 2);
 	i = 0;
 	while (i < stacks[2][0])
 	{
@@ -57,7 +56,7 @@ int	ft_get_entropy_unit(int **stacks, int **shadow, int stack, int i)
 	return (entropy);
 }
 
-void	ft_get_entropy(int **stacks, int stack, int **shadow)
+int	ft_get_entropy(int **stacks, int stack, int *end, int **shadow)
 {
 	int	ref;
 	int	entropy;
@@ -65,51 +64,27 @@ void	ft_get_entropy(int **stacks, int stack, int **shadow)
 	int	i;
 	int	j;
 
-	if (stacks[2][stack] == 0)
+	if (end[stack] == 0)
 		return (0);
 	entropy = INT_MAX;
 	temp = 0;
 	j = -1;
-	while (++j < stacks[2][stack])
+	while (++j < end[stack])
 	{	
 		i = -1;
-		while (++i < stacks[2][stack])
+		while (++i < end[stack])
 			temp += ft_abs(ft_get_entropy_unit(stacks, shadow, stack, i));
 		if (temp < entropy)
 		{
 			entropy = temp;
 			ref = shadow[stack][0];
 		}
-		ft_rotate(shadow, stack, stacks[2], 3);
+		ft_rotate(shadow, stack, end, 3);
 		temp = 0;
 	}
 	while (shadow[stack][0] != ref)
-		ft_rotate(shadow, stack, stacks[2], 3);
-	i = -1;
-	while (++i < stacks[6][stack])
-		shadow[stack + 2][i] = ft_abs(ft_get_entropy_unit(stacks, shadow, stack, i));
-}
-
-void	ft_get_modifier(int **stacks, int **shadow, int stack)
-{
-	int i;
-	int j;
-
-	i = stacks[2][stack];
-	while (++i < stacks[2][stack] * 2)
-	{
-		j = 0;
-		while (++j < shadow[stack][i])
-		{
-			if (shadow[stack][j] < 0)
-			{
-				if (shadow[stack][j] * (-1) >= )
-			}
-			
-		}
-		
-	}
-	
+		ft_rotate(shadow, stack, end, 3);
+	return (entropy);
 }
 
 void	ft_shadow_destroy(int **shadow)
@@ -118,6 +93,18 @@ void	ft_shadow_destroy(int **shadow)
 	free(shadow[1]);
 	free(shadow[2]);
 	shadow[0] = NULL;
+}
+
+int	ft_next(int **stacks, int **shadow)
+{
+	int	i;
+
+	i = 0;
+	while (i < stacks[2][0] && ft_get_entropy_unit(stacks, shadow, 0, i) == 0)
+		++i;
+	if (i == stacks[2][0] && ft_get_entropy_unit(stacks, shadow, 0, i) == 0)
+		return (-1);
+	return (i);
 }
 
 void	ft_algorythm_entropy(int **stacks, int *end)

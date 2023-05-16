@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ps_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:47:11 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/16 06:25:52 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/12 22:50:14 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,6 @@ int **ft_arr2cpy(int **src, int y, int x)
 		dest[i] = ft_arrcpy(src[i], x);
 	}
 	return (dest);
-}
-
-int	ft_arr_sum_abs(int *arr, int size)
-{
-	int i;
-	int sum;
-
-	i = -1;
-	while(++i < size)
-	{
-		sum += ft_abs(arr[i]);
-	}
-	return (sum);
 }
 
 int ft_is_next(int a, int b, int stack)
