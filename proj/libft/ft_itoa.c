@@ -35,7 +35,7 @@ static int	ft_powten(int pow_n)
 
 static void	ft_inttoa(char *str, int n, size_t pow_n, int sign)
 {
-	size_t	str_i;#include "libft.h"
+	size_t	str_i;
 	char	append;
 	int		pow;
 	int		n_split;

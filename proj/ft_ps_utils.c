@@ -6,7 +6,7 @@
 /*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:47:11 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/16 06:25:52 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/18 01:42:33 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ unsigned int	ft_itou(int nb)
 		u += nb;
 	return (u);
 }
+
 int	*ft_arrcpy(int *src, int size)
 {
 	int	*dest;
@@ -41,7 +42,7 @@ int	*ft_arrcpy(int *src, int size)
 	return (dest);
 }
 
-int **ft_arr2cpy(int **src, int y, int x)
+int	**ft_arr2cpy(int **src, int y, int x)
 {
 	int	**dest;
 	int i;
@@ -68,7 +69,7 @@ int	ft_arr_sum_abs(int *arr, int size)
 	return (sum);
 }
 
-int ft_is_next(int a, int b, int stack)
+int	ft_is_next(int a, int b, int stack)
 {
 	if (stack == 0)
 		stack = 1;
@@ -77,9 +78,9 @@ int ft_is_next(int a, int b, int stack)
 	return ((b - a) * stack);
 }
 
-int ft_is_orded(int **stacks, int stack, int *end)
+int	ft_is_orded(int **stacks, int stack, int *end)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < (end[stack] - 1))
@@ -87,7 +88,7 @@ int ft_is_orded(int **stacks, int stack, int *end)
 		if (ft_is_next(stacks[stack][i], stacks[stack][i + 1], stack) != 1)
 			return (i + 1);
 	}
-	return (i + 1);	
+	return (i + 1);
 }
 
 int	ft_abs(int n)
@@ -109,4 +110,30 @@ int	ft_is_in(int **stacks, int stack, int *end, int target)
 			return (i);
 	}
 	return (-1);
+}
+
+int ft_hightest(int **stacks, int stack, int *end)
+{
+	int i;
+	int	temp;
+
+	i = -1;
+	temp = 0;
+	while (++i < end[stack])
+		if (temp < stacks[stack][i])
+			temp = stacks[stack][i];
+	return (temp);
+}
+
+int ft_lowest(int **stacks, int stack, int *end)
+{
+	int i;
+	int	temp;
+
+	i = -1;
+	temp = INT_MAX;
+	while (++i < end[stack])
+		if (temp > stacks[stack][i])
+			temp = stacks[stack][i];
+	return (temp);
 }

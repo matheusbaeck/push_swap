@@ -3,42 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algorythm_lower.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 22:22:52 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/13 14:13:38 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/18 01:43:03 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int ft_hightest(int **stacks, int stack, int *end)
-{
-	int i;
-	int	temp;
 
-	i = -1;
-	temp = 0;
-	while (++i < end[stack])
-		if (temp < stacks[stack][i])
-			temp = stacks[stack][i];
-	return (temp);
-}
-int ft_lowest(int **stacks, int stack, int *end)
-{
-	int i;
-	int	temp;
-
-	i = -1;
-	temp = INT_MAX;
-	while (++i < end[stack])
-		if (temp > stacks[stack][i])
-			temp = stacks[stack][i];
-	return (temp);
-}
 void	ft_algorythm_3n(int **stacks, int stack, int *end)
 {
-	// move the smallest number to the top of stack A
 	if (stacks[stack][0] == ft_hightest(stacks, stack, end))
 		ft_rotate(stacks, stack, end, 0);
 	else if (stacks[0][1] == ft_hightest(stacks, 0, end))

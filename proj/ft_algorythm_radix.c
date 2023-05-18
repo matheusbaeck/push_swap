@@ -1,38 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_algorythm.c                                     :+:      :+:    :+:   */
+/*   ft_algorythm_radix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:49:24 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/08 22:36:41 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/18 01:11:37 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-int	ft_radix_skip(int **stacks, int stack, int *end, int magnitude)
-{
-	int	moves_skiped;
-	int	i;
-
-	moves_skiped = end[stack];
-	i = 0;
-	while (i++ < end[stack] && moves_skiped == end[stack])
-	{
-		if (((stacks[stack][i] >> magnitude) & 1) == stack)
-		{
-			moves_skiped = i;
-			if (i > (end[stack] / 2))
-				while (i++ < end[stack])
-					ft_rotate(stacks, stack, end, 0);
-			else
-				moves_skiped = 0 ;
-		}
-	}
-	return (moves_skiped);
-}
 
 int	ft_radix(int **stacks, int stack, int *end, int magnitude)
 {
@@ -41,7 +19,6 @@ int	ft_radix(int **stacks, int stack, int *end, int magnitude)
 	moves_count = end[stack];
 	while (moves_count > 0)
 	{
-		//moves_count -= ft_radix_skip(stacks, stack, end, magnitude);
 		if (((stacks[stack][0] >> magnitude) & 1) && moves_count > 0)
 			ft_rotate(stacks, stack, end, 0);
 		else if (moves_count > 0)

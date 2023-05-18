@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_entropy_moves.c                                 :+:      :+:    :+:   */
+/*   ft_algorythm_entropy_moves.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 21:12:28 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/14 01:40:43 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/18 01:48:55 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,3 @@ void	ft_do_followed(int **stacks, int **shadow, int i)
 	while (entropy-- > 0)
 		ft_do_push(stacks, 0, stacks[2], shadow);
 }
-// void	ft_do_push_back(int **stacks, int *end, int **shadow, int target)
-// {
-
-// }

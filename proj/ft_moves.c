@@ -33,8 +33,6 @@ int	ft_swap(int **stacks, int stack, int *end, int mod)
 		{
 			if (ft_swap(stacks, !stack, end, 1))
 				write(1, "ss\n", 3);
-			//else
-				//printf("Error\n");
 		}
 		return (1);
 	}
@@ -46,7 +44,7 @@ int	ft_push(int **stacks, int stack, int *end, int mod)
 	if (end[stack] >= 1)
 	{
 		end[!stack]++;
-		stacks[!stack][end[!stack] - 1] = stacks[stack][0]; //stacks[!stack]
+		stacks[!stack][end[!stack] - 1] = stacks[stack][0];
 		ft_rev_rotate(stacks, !stack, end, 1);
 		stacks[stack][0] = 0;
 		ft_rotate(stacks, stack, end, 1);
@@ -62,8 +60,6 @@ int	ft_push(int **stacks, int stack, int *end, int mod)
 		{
 			if (ft_push(stacks, !stack, end, 1))
 				write(1, "pp\n", 3);
-			//else
-				//printf("erro");
 		}
 		return (1);
 	}
@@ -123,4 +119,3 @@ int	ft_rev_rotate(int **stacks, int stack, int *end, int mod)
 	}
 	return (1);
 }
-

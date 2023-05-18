@@ -21,7 +21,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-	if (!(len_s1 > SIZE_T_MAX) && !(len_s2 > SIZE_T_MAX))
+	if (!(len_s1 > UINT_MAX) && !(len_s2 > UINT_MAX))
 	{
 		s3 = malloc((len_s1 + len_s2 + 1) * sizeof(char));
 		if (!s3)
