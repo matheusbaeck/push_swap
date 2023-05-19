@@ -6,7 +6,7 @@
 /*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 20:13:18 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/18 19:50:32 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/18 23:29:38 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_shadow_init(int **shadow, int **stacks, int start_zero, int start_one)
 int	ft_entropy_get_unit(int **stacks, int **shadow, int stack, int i)
 {
 	int	entropy;
+	i = 0;
 
 	entropy = stacks[stack][i] - shadow[stack][i];
 	if (entropy > (stacks[2][stack] / 2))
@@ -57,7 +58,7 @@ int	ft_entropy_get_unit(int **stacks, int **shadow, int stack, int i)
 	return (entropy);
 }
 
-void	ft_entropy_set(int **stacks, int stack, int **shadow)
+void	ft_entropy_init(int **stacks, int stack, int **shadow)
 {
 	int	ref;
 	int	entropy;
@@ -90,17 +91,9 @@ void	ft_entropy_set(int **stacks, int stack, int **shadow)
 		shadow[stack + 2][i] = ft_abs(ft_get_entropy_unit(stacks, shadow, stack, i));
 }
 
-void	ft_shadow_destroy(int **shadow)
-{
-	free(shadow[0]);
-	free(shadow[1]);
-	free(shadow[2]);
-	shadow[0] = NULL;
-}
-
 void	ft_algorythm_entropy(int **stacks, int *end)
 {
-	int	*shadow[3];
+	int	*shadow[6];
 	int	entropy[2];
 	int	i;
 	int temp;
@@ -111,7 +104,7 @@ void	ft_algorythm_entropy(int **stacks, int *end)
 	{
 		if (!shadow[0])
 		{
-			ft_get_shadow(shadow, stacks, ft_lowest(stacks, 0, end), ft_lowest(stacks, 1, end));
+			ft_shadow_init(shadow, stacks, ft_lowest(stacks, 0, end), ft_lowest(stacks, 1, end));
 			entropy[0] = ft_get_entropy(stacks, 0, end, shadow);
 			entropy[1] = ft_get_entropy(stacks, 1, end, shadow);
 		}

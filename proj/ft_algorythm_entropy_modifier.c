@@ -6,7 +6,7 @@
 /*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 00:32:12 by math42            #+#    #+#             */
-/*   Updated: 2023/05/18 20:03:40 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/18 23:20:27 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	**ft_init_modifier(int **shadow, int **modifier)
 	return (modifier);
 }
 
-int	ft_modifier_bigger_diagonal(int **shadow, int **modifier)
+int	ft_modifier_get_bigger_diagonal(int **shadow, int **modifier)
 {
 	int	i;
 	int	max;
@@ -76,7 +76,7 @@ int	ft_modifier_bigger_diagonal(int **shadow, int **modifier)
 	return (max);
 }
 
-void	ft_modifier_col_zeros(int **shadow, int **modifier, int target)
+void	ft_modifier_set_zeros_columns(int **shadow, int **modifier, int target)
 {
 	int	i;
 
@@ -88,13 +88,11 @@ void	ft_modifier_col_zeros(int **shadow, int **modifier, int target)
 }
 
 //SUM COLUMNS AND RETURN ARRAY
-int	*ft_sum_columns(int **shadow, int *modifier)
+void	ft_modifier_sum_columns(int **shadow, int **modifier, int *arr)
 {
-	int	j:
+	int	j;
 	int	i;
-	int	*arr;
 
-	arr = (int *)ft_calloc(shadow[6][0] ,sizeof(int));
 	j = -1;
 	i = -1;
 	while (++j < shadow[6][0])
@@ -102,28 +100,33 @@ int	*ft_sum_columns(int **shadow, int *modifier)
 		while (i++ < shadow[6][0])
 			arr[i] = modifier[i][j];
 	}
-	return (arr);
 }
 
 //RETURN SUM ENTROPY AND MODIFIER
-int *ft_get_modified_entropy(int **shadow)
-{
-	int	i:
-	int	*arr;
-
-	arr = (int *)ft_calloc(shadow[6][0] ,sizeof(int));
-	i = -1;
-	while (++i < shadow[6][0])
-	{
-		arr[i] = shadow[2][i] + shadow[4][i];	
-	}
-	return (arr);
-}
-
-
-void	ft_modifier_get_push_list(int **stacks, int **shadow, int *list)
+void	ft_modifier_entropy_recalculate(int **shadow, int *arr)
 {
 	int	i;
 
-	if ()
+	i = -1;
+	while (++i < shadow[6][0])
+	{
+		arr[i] = shadow[2][i] + shadow[4][i];
+	}
+}
+
+void	ft_modifier_get_push_list(int **shadow, int **modifier, int *push_list)
+{
+}
+
+int	ft_manager(int **shadow)
+{
+	int	**modifier;
+	int	*new_entropy;
+	int	*modifier_arr;
+	int	*push_list;
+
+	new_entropy = ft_arrcpy(shadow[2][0]);
+	modifier = **ft_init_modifier(shadow, modifier);
+	modifier_arr = ft_modifier_sum_columns(shadow, modifier, modifier_arr);
+	if (modifier)
 }
