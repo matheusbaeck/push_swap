@@ -6,7 +6,7 @@
 /*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:49:28 by math42            #+#    #+#             */
-/*   Updated: 2023/05/19 01:15:14 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/19 05:52:26 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ void	ft_entropy_set_best(int **stacks, int **shadow, int **entropy,
 	int	i;
 	int	j;
 
-	if (stacks[2][stack] == 0)
-		return (0);
+	// if (stacks[2][stack] == 0)
+	// 	return (0);
 	j = -1;
 	while (++j < stacks[2][stack])
 	{
 		i = -1;
 		temp = 0;
 		while (++i < stacks[2][stack])
-			temp += ft_abs(ft_get_entropy_unit(stacks, shadow, stack, i));
+			temp += ft_abs(ft_entropy_get_unit(stacks, shadow, stack, i));
 		if (temp < entropy[2][stack])
 		{
 			entropy[2][stack] = temp;
@@ -62,11 +62,11 @@ void	ft_entropy_set(int **stacks, int **shadow, int **entropy, int stack)
 
 	i = -1;
 	while (++i < stacks[2][stack])
-		entropy[stack][i] = ft_get_entropy_unit(stacks, shadow, stack, i);
+		entropy[stack][i] = ft_entropy_get_unit(stacks, shadow, stack, i);
 }
 
 //entropy[2] => (sum1[0], sum2[1], ref1[2], ref2[3], temp2[4], ref2[5])
-void	ft_entropy_init(int **stacks, int **shadow, int **entropy, int stack)
+void	ft_entropy_init(int **stacks, int **entropy)
 {
 	int	size;
 
@@ -74,6 +74,6 @@ void	ft_entropy_init(int **stacks, int **shadow, int **entropy, int stack)
 	entropy[0] = (int *)malloc(size * sizeof(int));
 	entropy[1] = (int *)malloc(size * sizeof(int));
 	entropy[2] = (int *)malloc(6 * sizeof(int));
-	entropy[0] = INT_MAX;
-	entropy[1] = INT_MAX;
+	entropy[2][0] = INT_MAX;
+	entropy[2][1] = INT_MAX;
 }

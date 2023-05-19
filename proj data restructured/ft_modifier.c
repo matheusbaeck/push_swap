@@ -6,7 +6,7 @@
 /*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 00:32:12 by math42            #+#    #+#             */
-/*   Updated: 2023/05/19 02:40:12 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/19 05:58:57 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,29 @@ void	ft_modifier_set_diagonal_one(int **modifier, int size, int target)
 	i = -1;
 	while (++i < size)
 		if (i != target)
-			modifier[i][target] = 0 : ft_modifier_set_total(modifier, size);
+			modifier[i][target] = 0;
+	ft_modifier_set_total(modifier, size);
 }
 
-void	ft_modifier_set(int **shadow, int **entropy, int **modifier)
+void	ft_modifier_set(int **modifier, int size)
 {
 	int	i;
 	int	j;
 	int	k;
 
 	i = -1;
-	while (++i < shadow[2][0])
+	while (++i < size)
 	{
 		j = -1;
-		k = shadow[2][0];
-		while (++j < shadow[2][0] && --k >= 0)
+		k = size;
+		while (++j < size && --k >= 0)
 		{
-			if ((-1)j <= modifier[0][j] || k >= modifier[0][j])
+			if (((-1) * j) <= modifier[0][j] || k >= modifier[0][j])
 				modifier[i][j] = modifier[0][j] / ft_abs(modifier[0][j]);
 		}
-		shadow[i][i] = 0;
+		modifier[i][i] = 0;
 	}
-	ft_modifier_set_total(shadow, modifier);
+	ft_modifier_set_total(modifier, size);
 }
 
 void	ft_modifier_init(int **modifier, int size)
