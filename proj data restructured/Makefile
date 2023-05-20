@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: math42 <math42@student.42.fr>              +#+  +:+       +#+         #
+#    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 23:11:40 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/05/19 06:03:31 by math42           ###   ########.fr        #
+#    Updated: 2023/05/19 22:37:47 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CFLAGS = -Wall -Werror -Wextra -g3
 all: $(NAME) clean
 
 $(NAME): libft.a $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS) libft.a -o $(NAME)
 
 libft.a:
 	cd libft && make

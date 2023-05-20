@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_modifier.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 00:32:12 by math42            #+#    #+#             */
-/*   Updated: 2023/05/19 05:58:57 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/20 01:56:34 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_modifier_set_diagonal_one(int **modifier, int size, int target)
 	ft_modifier_set_total(modifier, size);
 }
 
-void	ft_modifier_set(int **modifier, int size)
+void	ft_modifier_set(int **entropy, int **modifier, int size)
 {
 	int	i;
 	int	j;
@@ -53,20 +53,26 @@ void	ft_modifier_set(int **modifier, int size)
 		k = size;
 		while (++j < size && --k >= 0)
 		{
-			if (((-1) * j) <= modifier[0][j] || k >= modifier[0][j])
-				modifier[i][j] = modifier[0][j] / ft_abs(modifier[0][j]);
+			if (((-1) * j) <= entropy[0][j] || k >= entropy[0][j])
+			{
+				if (entropy[0][j] == 0)
+					modifier[i][j] = 0;
+				else
+					modifier[i][j] = entropy[0][j] / ft_abs(entropy[0][j]);
+			}
 		}
 		modifier[i][i] = 0;
 	}
 	ft_modifier_set_total(modifier, size);
 }
 
-void	ft_modifier_init(int **modifier, int size)
+void	ft_modifier_init(int ***data)
 {
+	int	size;
 	int	i;
 
 	i = -1;
-	modifier = (int **)ft_calloc(size + 1, sizeof(int *));
+	size = data[0][2][0];
 	while (++i < (size + 1))
-		modifier[i] = (int *)ft_calloc(size, sizeof(int));
+		data[3][i] = (int *)ft_calloc(size, sizeof(int));
 }

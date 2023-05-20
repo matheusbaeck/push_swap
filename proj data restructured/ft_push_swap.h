@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:03:06 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/19 05:57:43 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/20 01:52:55 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_algorythm_init(int ***data, int **stacks);
 void	ft_algorythm_push_down(int ***data);
 void	ft_algorythm(int **stacks);
 //SHADOW
-void	ft_shadow_init(int **stacks, int **shadow);
+void	ft_shadow_init(int ***data);
 void	ft_shadow_set(int **stacks, int **shadow, int start_zero,
 			int start_one);
 //SHADOW MOVES
@@ -57,12 +57,12 @@ int		ft_entropy_get_unit(int **stacks, int **shadow, int stack, int i);
 void	ft_entropy_set_best(int **stacks, int **shadow, int **entropy,
 			int stack);
 void	ft_entropy_set(int **stacks, int **shadow, int **entropy, int stack);
-void	ft_entropy_init(int **stacks, int **entropy);
+void	ft_entropy_init(int ***data);
 //MODIFIER
 void	ft_modifier_set_total(int **modifier, int size);
 void	ft_modifier_set_diagonal_one(int **modifier, int size, int target);
-void	ft_modifier_set(int **modifier, int size);
-void	ft_modifier_init(int **modifier, int size);
+void	ft_modifier_set(int **entropy, int **modifier, int size);
+void	ft_modifier_init(int ***data);
 //UTILS
 unsigned int	ft_itou(int nb);
 int		*ft_arrcpy(int *src, int size);

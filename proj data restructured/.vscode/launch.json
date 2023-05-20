@@ -1,0 +1,105 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "9",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["1 2 9 3 5 4 10 7 8 6"],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		},
+		{
+			"name": "bug100",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["20 66 26 23 96 55 39 92 16 87 22 2 21 100 1 63 46 77 40 34 85 50 67 91 71 6 11 15 56 32 90 93 35 65 27 75 94 52 58 36 47 43 80 73 83 7 10 82 81 59 78 86 9 25 30 37 48 24 45 60 70 41 4 53 42 57 8 68 74 95 5 49 3 12 33 28 29 89 64 97 79 98 18 88 17 72 54 69 44 84 51 76 62 13 38 14 31 99 19 61"],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		},
+		{
+			"name": "ordenated loop",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["2 6 3 9 8 4 1 7 5"],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		},
+		{
+			"name": "swap loop",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["3 6 7 2 1 5 8 4 9"],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		},
+		{
+			"name": "else rotate loop",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["6 8 1 5 3 7 4 9 2"],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		},
+		{
+			"name": "loop",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["4 5 7 9 10 6 8 3 1 2"],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		},
+		{
+			"name": "slow",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["9 8 10 5 4 3 7 2 1 6"],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		},				
+		{
+			"name": "100",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["6969879927", "4236264842 4256477295 9965992983 4308506149 2665869906 3986125745 9496685342 5704835441 1510180300 8627139287 1905121970 3167237046 9284683237 2446159972 3382635665 2174163418 5857052743 1970222475 7166566162 4497174656 4161430562 9615158540 8664121925 1173428509 1020541513 2959815720 773779982 3347007069 6964959235 9846518335 782882864 9674551764 4717695551 6195795970 1307032133 3238709558 4981860512 9063014565 7185139938 3364145586 9055365152 7745372300 924243130 252051985 5962097078 8090216514 8255642200 901331187 325004967 6977575500 8575376030 4189794146 4630874867 5535399640 2936654936 7317238877 388322069 3298405202 8712071419 5669367020 4827080637 3031273663 1827348318 506999064 2236256373 7155057631 8625352840 2065088003 6368898487 1379814307 7054368643 3561460004 2718531433 9063110795 2672916600 7793011319 203041939 1359408112 8974244896 7936113394 3000079354 6954035324 2080668909 9062486174 8360548684 6453444251 7708978566 3428630255 5037777431 7730204930 9556754479 9744504869 3725570828 5443375079 4292486352 6580880540 5510614661 5000079627 8348835179"],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		}
+
+	]
+}

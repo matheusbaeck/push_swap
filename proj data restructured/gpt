@@ -1,0 +1,63 @@
+void	ft_shadow_init(int **stacks, int **shadow)
+{
+	int	size;
+
+	size = stacks[2][0] + stacks[2][1] + 1;
+	shadow[0] = (int *)ft_calloc(size, sizeof(int));
+	shadow[1] = (int *)ft_calloc(size, sizeof(int));
+	shadow[2] = ft_arrcpy(stacks[2], 2);
+}
+
+void	ft_shadow_set(int **stacks, int **shadow, int start_zero, int start_one)
+{
+	int	i;
+
+	i = 0;
+	while (i < stacks[2][0])
+	{
+		if (ft_is_in(stacks, 1, stacks[2], start_zero) < 0)
+		{
+			shadow[0][i] = start_zero;
+			i++;
+		}
+		start_zero++;
+	}
+	i = 0;
+	while (i < stacks[2][1])
+	{
+		if (ft_is_in(stacks, 0, stacks[2], start_one) < 0)
+		{
+			shadow[1][i] = start_one;
+			i++;
+		}
+		start_one++;
+	}
+}
+// data[] = (stacks[0], shadow[1], entropy[2], modifier[3])
+void	ft_algorythm_init(int ***data, int **stacks)
+{
+	data[0] = stacks;
+	data[1] = (int **)malloc(3 * sizeof(int *));
+	data[2] = (int **)malloc(3 * sizeof(int *));
+	data[3] = (int **)malloc(3 * sizeof(int *));
+	ft_shadow_init(data[0], data[1]);
+	ft_shadow_set(data[0], data[1], ft_lowest(data[0], 0, data[0][2]),
+			ft_lowest(data[0], 1, data[0][2]));
+	ft_entropy_init(data[0], data[2]);
+	ft_entropy_set_best(data[0], data[2], data[2], 0);
+	ft_modifier_init(data[1], data[0][2][0]);
+	ft_modifier_set(data[2], data[3], data[0][2][0]);
+}
+
+void	ft_algorythm(int **stacks)
+{
+	int	**data[4];
+
+	ft_algorythm_init(data, stacks);
+	ft_algorythm_push_down(data);
+	while (data[0][2][1] > 0)
+		ft_do_push(data[0], 1, data[0][2], data[1]);
+	ft_destroy_data(data);
+}
+
+Im losing all information after calling ft_shadow_init and ft_shadow_set. Why and how to solve it

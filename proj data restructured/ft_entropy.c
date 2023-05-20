@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_entropy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:49:28 by math42            #+#    #+#             */
-/*   Updated: 2023/05/19 05:52:26 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/20 01:43:12 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	ft_entropy_get_unit(int **stacks, int **shadow, int stack, int i)
 {
 	int	entropy;
 
-	i = 0;
 	entropy = stacks[stack][i] - shadow[stack][i];
 	if (entropy > (stacks[2][stack] / 2))
 	{
@@ -66,14 +65,14 @@ void	ft_entropy_set(int **stacks, int **shadow, int **entropy, int stack)
 }
 
 //entropy[2] => (sum1[0], sum2[1], ref1[2], ref2[3], temp2[4], ref2[5])
-void	ft_entropy_init(int **stacks, int **entropy)
+void	ft_entropy_init(int ***data)
 {
 	int	size;
 
-	size = stacks[2][0] + stacks[2][1] + 1;
-	entropy[0] = (int *)malloc(size * sizeof(int));
-	entropy[1] = (int *)malloc(size * sizeof(int));
-	entropy[2] = (int *)malloc(6 * sizeof(int));
-	entropy[2][0] = INT_MAX;
-	entropy[2][1] = INT_MAX;
+	size = data[0][2][0] + data[0][2][1] + 1;
+	data[2][0] = (int *)malloc(size * sizeof(int));
+	data[2][1] = (int *)malloc(size * sizeof(int));
+	data[2][2] = (int *)malloc(6 * sizeof(int));
+	data[2][2][0] = INT_MAX;
+	data[2][2][1] = INT_MAX;
 }
