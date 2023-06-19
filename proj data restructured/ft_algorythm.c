@@ -6,11 +6,55 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 20:13:18 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/20 02:10:07 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/06/01 03:38:02 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
+
+void	print_data(int ***data)
+{
+	int	j;
+	int	i;
+
+	printf("STACKS\n");
+	for (j = 0; j < 1; j++)
+	{
+		for (i = 0; i < data[0][2][0]; i++)
+		{
+			printf("%d ", data[0][j][i]);
+		}
+		printf("\n");
+	}
+	printf("SHADOOW\n");
+	for (j = 0; j < 1; j++)
+	{
+		for (i = 0; i < data[0][2][0]; i++)
+		{
+			printf("%d ", data[1][j][i]);
+		}
+		printf("\n");
+	}
+	printf("ENTROPY\n");
+	for (j = 0; j < 1; j++)
+	{
+		for (i = 0; i < data[0][2][0]; i++)
+		{
+			printf("%+d ", data[2][j][i]);
+		}
+		printf("\n");
+	}
+	printf("MODIFIER\n");
+	for (j = 0; j <= data[0][2][0]; j++)
+	{
+		for (i = 0; i < data[0][2][0]; i++)
+		{
+			printf("%+d ", data[3][j][i]);
+		}
+		printf("\n");
+	}
+
+}
 
 void	ft_destroy_data(int ***data)
 {
@@ -57,14 +101,15 @@ void	ft_algorythm_push_down(int ***data)
 	size = data[0][2][0];
 	while (ft_cmp_entropy_modifier(data[2][0], data[3][0], size))
 	{
+		print_data(data);
 		i = 0;
 		temp = 0;
 		while (++i < size)
 		{
-			if (ft_abs(data[3][temp][i]) < ft_abs(data[3][size][i]))
+			if (ft_abs(data[3][size][i]) > ft_abs(data[3][size][temp]))
 				temp = i;
-			else if ((data[3][temp][i]) == ft_abs(data[3][size][i]))
-				if (data[3][temp][i] < 0)
+			else if ((data[3][size][temp]) == ft_abs(data[3][size][i]))
+				if (data[2][size][i] > 0)
 					temp = i;
 		}
 		ft_modifier_set_diagonal_one(data[3], size, temp);
@@ -89,6 +134,9 @@ void	ft_algorythm_init(int ***data, int **stacks)
 	ft_entropy_set_best(data[0], data[1], data[2], 0);
 	ft_modifier_init(data);
 	ft_modifier_set(data[2], data[3], data[0][2][0]);
+	print_data(data);
+	ft_modifier_set_total(data[3], data[0][2][0]);
+	print_data(data);
 }
 
 void	ft_algorythm(int **stacks)
@@ -97,7 +145,7 @@ void	ft_algorythm(int **stacks)
 
 	ft_algorythm_init(data, stacks);
 	ft_algorythm_push_down(data);
-	while (data[0][2][1] > 0)
-		ft_do_push(data[0], 1, data[0][2], data[1]);
+	// while (data[0][2][1] > 0)
+	// 	ft_do_push(data[0], 1, data[0][2], data[1]);
 	//ft_destroy_data(data);
 }

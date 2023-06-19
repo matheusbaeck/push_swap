@@ -1,62 +1,16 @@
 {
 	"configurations": [
-	{
-		"name": "(gdb) script",
-		"type": "cppdbg",
-		"request": "launch",
-		"program": "${workspaceFolder}/push_swap",
-		"args": ["1 2 9 3 5 4 10 7 8 6"],
-		"stopAtEntry": true,
-		"cwd": "${fileDirname}",
-		"environment": [],
-		"externalConsole": false,
-		"MIMode": "gdb",
-		"miDebuggerPath": "/home/math42/.gdbinit"
-		// "miDebuggerPath": "/usr/bin/terminal_debuger.sh"
-	},
-	{
-		"name": "(gdb) Launch",
-		"type": "cppdbg",
-		"request": "launch",
-		"program": "${workspaceFolder}/push_swap",
-		"args": ["1 2 9 3 5 4 10 7 8 6"],
-		"stopAtEntry": true,
-		"cwd": "${fileDirname}",
-		"environment": [],
-		"externalConsole": false,
-		"MIMode": "gdb",
-		"setupCommands": [
-			{
-				"description": "Enable pretty-printing for gdb",
-				"text": "-enable-pretty-printing",
-				"ignoreFailures": true
-			},
-			{
-				"description": "Set Disassembly Flavor to Intel",
-				"text": "-gdb-set disassembly-flavor intel",
-				"ignoreFailures": true
-			}
-		],
-		
-	}
+		{
+			"name": "(lldb) Launch",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["-11111 2 9 3 5 4 100000 7 8 6"],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "lldb"
+		}
 	]
 }
-
-// {
-// 	"configurations": [
-// 		{
-// 		  "name": "(gdb) Launch",
-// 		  "type": "cppdbg",
-// 		  "request": "launch",
-// 		  "program": "${workspaceFolder}/push_swap",
-// 		  "args": ["1 2 9 3 5 4 10 7 8 6"],
-// 		  "stopAtEntry": true,
-// 		  "cwd": "${fileDirname}",
-// 		  "environment": [],
-// 		  "externalConsole": false,
-// 		  "MIMode": "gdb",
-// 		  "miDebuggerPath": "/path/to/your/bash/script.sh"
-// 		}
-// 	]
-//   }
-  
