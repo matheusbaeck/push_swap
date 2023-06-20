@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:03:06 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/20 01:52:55 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/06/19 20:04:38 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_entropy_set(int **stacks, int **shadow, int **entropy, int stack);
 void	ft_entropy_init(int ***data);
 //MODIFIER
 void	ft_modifier_set_total(int **modifier, int size);
-void	ft_modifier_set_diagonal_one(int **modifier, int size, int target);
+void	ft_modifier_set_diagonal_one(int ***data, int target);
 void	ft_modifier_set(int **entropy, int **modifier, int size);
 void	ft_modifier_init(int ***data);
 //UTILS

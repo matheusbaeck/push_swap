@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_algorythm_entropy_moves.c                       :+:      :+:    :+:   */
+/*   ft_shadow_moves.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 21:12:28 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/18 01:48:55 by math42           ###   ########.fr       */
+/*   Updated: 2023/06/20 03:12:51 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_do_rotate(int **stacks, int *end, int **shadow, int target)
 	int	dist;
 	int	stack;
 	int	(*move)(int **, int, int *, int);
-
 
 	if ((dist = ft_is_in(stacks, 1, end, target)) >= 0)
 		stack = 1;

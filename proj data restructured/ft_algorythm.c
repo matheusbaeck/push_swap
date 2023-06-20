@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 20:13:18 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/06/01 03:38:02 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/06/20 03:31:45 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,13 @@ int	ft_cmp_entropy_modifier(int *entropy, int *modifier, int size)
 	return (0);
 }
 
+int	ft_bigger(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
 void	ft_algorythm_push_down(int ***data)
 {
 	int	size;
@@ -99,25 +106,31 @@ void	ft_algorythm_push_down(int ***data)
 	int	i;
 
 	size = data[0][2][0];
-	while (ft_cmp_entropy_modifier(data[2][0], data[3][0], size))
+	while (ft_cmp_entropy_modifier(data[2][0], data[3][size], size))
 	{
-		print_data(data);
 		i = 0;
-		temp = 0;
+		temp = -1;
 		while (++i < size)
 		{
-			if (ft_abs(data[3][size][i]) > ft_abs(data[3][size][temp]))
-				temp = i;
-			else if ((data[3][size][temp]) == ft_abs(data[3][size][i]))
-				if (data[2][size][i] > 0)
+			if (data[3][i][i] == 0 && (data[2][0][i] + data[3][size][i]) != 0)
+			{
+				if (temp == -1)
 					temp = i;
+				else if (ft_bigger(ft_arr_sum_abs(data[3][i], size),
+					ft_abs(data[2][0][i])) >
+						ft_bigger(ft_arr_sum_abs(data[3][temp],
+							size), ft_abs(data[2][0][temp])))
+					temp = i;
+				else if ((ft_bigger(ft_arr_sum_abs(data[3][i], size),
+						ft_abs(data[2][0][i])) ==
+							ft_bigger(ft_arr_sum_abs(data[3][temp],
+								size), ft_abs(data[2][0][temp])))
+									&& data[2][0][i] > 0)
+					temp = i;
+			}
 		}
-		ft_modifier_set_diagonal_one(data[3], size, temp);
+		ft_modifier_set_diagonal_one(data, temp);
 	}
-	i = -1;
-	while (++i < size)
-		if (data[3][i][i] == 1)
-			ft_do_push(data[0], 0, data[0][2], data[1]);
 }
 
 // data[] = (stacks[0], shadow[1], entropy[2], modifier[3])
@@ -134,9 +147,21 @@ void	ft_algorythm_init(int ***data, int **stacks)
 	ft_entropy_set_best(data[0], data[1], data[2], 0);
 	ft_modifier_init(data);
 	ft_modifier_set(data[2], data[3], data[0][2][0]);
-	print_data(data);
-	ft_modifier_set_total(data[3], data[0][2][0]);
-	print_data(data);
+}
+
+void	ft_do_push2(int ***data)
+{
+	int i;
+
+	i = -1;
+	while (++i < data[0][2][0])
+	{
+		if (data[3][i][i] != 0)
+		{
+			ft_do_push(data[0], 0, data[0][2], data[1]);
+		}
+	}
+	
 }
 
 void	ft_algorythm(int **stacks)
@@ -145,6 +170,8 @@ void	ft_algorythm(int **stacks)
 
 	ft_algorythm_init(data, stacks);
 	ft_algorythm_push_down(data);
+	print_data(data);
+	ft_do_push2(data);
 	// while (data[0][2][1] > 0)
 	// 	ft_do_push(data[0], 1, data[0][2], data[1]);
 	//ft_destroy_data(data);

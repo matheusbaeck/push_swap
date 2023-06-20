@@ -6,40 +6,46 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 00:32:12 by math42            #+#    #+#             */
-/*   Updated: 2023/06/01 03:43:55 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/06/19 23:50:37 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ft_modifier_set_total(int **modifier, int size)
+// void	ft_modifier_set_total(int **modifier, int size)
+// {
+// 	int	j;
+// 	int	i;
+// 	int	temp;
+
+// 	j = -1;
+// 	while (++j < size)
+// 	{
+// 		temp = 0;
+// 		i = -1;
+// 		while (i++ < size)
+// 			temp += modifier[i][j];
+// 		modifier[size][j] = (temp);
+// 		if (modifier[j][j] == 0)
+// 			modifier[size][j] = 0;
+// 	}
+// }
+
+void	ft_modifier_set_diagonal_one(int ***data, int target)
 {
-	int	j;
-	int	i;
-	int temp;
-
-	j = -1;
-	while (++j < size)
-	{
-		temp = 0;
-		i = -1;
-		while (i++ < size)
-			if (i != j)
-				temp += ft_abs(modifier[j][i]);
-		modifier[size][j] = temp;
-	}
-}
-
-void	ft_modifier_set_diagonal_one(int **modifier, int size, int target)
-{
 	int	i;
 
-	modifier[target][target] = 1;
 	i = -1;
-	while (++i < size)
+	while (++i < data[0][2][0])
+	{
+		if (data[3][i][i] == 0)
+			data[3][data[0][2][0]][i] += data[3][target][i];
 		if (i != target)
-			modifier[i][target] = 0;
-	ft_modifier_set_total(modifier, size);
+			data[3][target][i] = 0;
+		else
+			data[3][target][target] = 1;
+	}
+	data[3][data[0][2][0]][target] = data[2][0][target] * (-1);
 }
 
 int	test(int entropy, int index, int target, int size)
