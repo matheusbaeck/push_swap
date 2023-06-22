@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 20:13:18 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/06/20 03:31:45 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/06/22 00:49:19 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ void	print_data(int ***data)
 {
 	int	j;
 	int	i;
+	int size = data[0][2][0] + data[0][2][1];
 
 	printf("STACKS\n");
-	for (j = 0; j < 1; j++)
+	for (j = 0; j < 2; j++)
 	{
-		for (i = 0; i < data[0][2][0]; i++)
+		for (i = 0; i < size; i++)
 		{
 			printf("%d ", data[0][j][i]);
 		}
@@ -29,7 +30,7 @@ void	print_data(int ***data)
 	printf("SHADOOW\n");
 	for (j = 0; j < 1; j++)
 	{
-		for (i = 0; i < data[0][2][0]; i++)
+		for (i = 0; i < size; i++)
 		{
 			printf("%d ", data[1][j][i]);
 		}
@@ -38,21 +39,27 @@ void	print_data(int ***data)
 	printf("ENTROPY\n");
 	for (j = 0; j < 1; j++)
 	{
-		for (i = 0; i < data[0][2][0]; i++)
+		for (i = 0; i < size; i++)
 		{
 			printf("%+d ", data[2][j][i]);
 		}
 		printf("\n");
 	}
 	printf("MODIFIER\n");
-	for (j = 0; j <= data[0][2][0]; j++)
+	for (j = 0; j <= size; j++)
 	{
-		for (i = 0; i < data[0][2][0]; i++)
+		for (i = 0; i < size; i++)
 		{
 			printf("%+d ", data[3][j][i]);
 		}
 		printf("\n");
 	}
+	printf("DIAGONAL\n");
+	for (i = 0; i < size; i++)
+	{
+		printf("%d ", data[3][i][i]);
+	}
+	printf("\n");
 
 }
 
@@ -129,7 +136,18 @@ void	ft_algorythm_push_down(int ***data)
 					temp = i;
 			}
 		}
-		ft_modifier_set_diagonal_one(data, temp);
+		if (temp > 0)
+			ft_modifier_set_diagonal_one(data, temp);
+		else
+			print_data(data);
+	}
+	i = -1;
+	while (++i < size)
+	{
+		if (data[3][i][i] != 0)
+			data[3][size][i] = data[0][0][i];
+		else
+			data[3][size][i] = 0;
 	}
 }
 
@@ -139,7 +157,7 @@ void	ft_algorythm_init(int ***data, int **stacks)
 	data[0] = stacks;
 	data[1] = (int **)malloc(3 * sizeof(int *));
 	data[2] = (int **)malloc(3 * sizeof(int *));
-	data[3] = (int **)malloc(3 * sizeof(int *));
+	data[3] = (int **)malloc((stacks[2][0] + 1) * sizeof(int *));
 	ft_shadow_init(data);
 	ft_shadow_set(data[0], data[1], ft_lowest(data[0], 0, data[0][2]),
 		ft_lowest(data[0], 1, data[0][2]));
@@ -149,30 +167,35 @@ void	ft_algorythm_init(int ***data, int **stacks)
 	ft_modifier_set(data[2], data[3], data[0][2][0]);
 }
 
-void	ft_do_push2(int ***data)
-{
-	int i;
-
-	i = -1;
-	while (++i < data[0][2][0])
-	{
-		if (data[3][i][i] != 0)
-		{
-			ft_do_push(data[0], 0, data[0][2], data[1]);
-		}
-	}
-	
-}
-
 void	ft_algorythm(int **stacks)
 {
 	int	**data[4];
 
 	ft_algorythm_init(data, stacks);
 	ft_algorythm_push_down(data);
+
+	int i = -1;
+	int size = data[0][2][0];
+	while (++i < size)
+	{
+		if (data[3][size][i] != 0)
+		{
+			ft_do_rotate(data[0], data[0][2], data[1], data[3][size][i]);
+			ft_do_push(data[0], 0, data[0][2], data[1]);
+		}
+	}
+	while (data[0][2][1] != 0)
+	{
+		if (data[0][0][0] + 1 != data[0][0][1])
+		{
+			ft_do_rotate(data[0], data[0][2], data[1], data[0][0][0] + 1);
+			ft_do_rotate(data[0], data[0][2], data[1], data[0][0][1]);
+			ft_do_push(data[0], 1, data[0][2], data[1]);
+		}
+		else
+			ft_do_rotate(data[0], data[0][2], data[1], data[0][0][1]);
+	}
+	ft_do_rotate(data[0], data[0][2], data[1], 1);
 	print_data(data);
-	ft_do_push2(data);
-	// while (data[0][2][1] > 0)
-	// 	ft_do_push(data[0], 1, data[0][2], data[1]);
-	//ft_destroy_data(data);
+	// ft_destroy_data(data);
 }

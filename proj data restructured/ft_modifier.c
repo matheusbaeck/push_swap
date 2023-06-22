@@ -6,30 +6,30 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 00:32:12 by math42            #+#    #+#             */
-/*   Updated: 2023/06/19 23:50:37 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/06/22 00:53:19 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-// void	ft_modifier_set_total(int **modifier, int size)
-// {
-// 	int	j;
-// 	int	i;
-// 	int	temp;
+void	ft_modifier_set_total(int **modifier, int size)
+{
+	int	j;
+	int	i;
+	int	temp;
 
-// 	j = -1;
-// 	while (++j < size)
-// 	{
-// 		temp = 0;
-// 		i = -1;
-// 		while (i++ < size)
-// 			temp += modifier[i][j];
-// 		modifier[size][j] = (temp);
-// 		if (modifier[j][j] == 0)
-// 			modifier[size][j] = 0;
-// 	}
-// }
+	j = -1;
+	while (++j < size)
+	{
+		temp = 0;
+		i = -1;
+		while (i++ < size)
+			temp += modifier[i][j];
+		modifier[size][j] = (temp);
+		if (modifier[j][j] == 0)
+			modifier[size][j] = 0;
+	}
+}
 
 void	ft_modifier_set_diagonal_one(int ***data, int target)
 {
