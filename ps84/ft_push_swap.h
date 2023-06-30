@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:03:06 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/06/30 20:24:54 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/06/30 22:47:24 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct s_data_get_numbers
+{
+	char		**str;
+	int			*n;
+	int long	temp;
+	int			arg_counter;
+	int			i_s;
+	int			i_n;
+}				t_data;
 
 int				ft_str_count(char *argv);
 int				ft_check_duplicity(int *numbers, int size);

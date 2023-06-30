@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 01:50:42 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/06/30 20:44:30 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/06/30 22:47:18 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,37 +74,31 @@ int	ft_str_count(char *argv)
 
 int	*ft_get_numbers(int argc, int count, char **argv)
 {
-	char		**str;
-	int			*numbers;
-	int long	temp;
-	int			arg_counter;
-	int			index_str;
-	int			index_nbr;
+	t_data	dt;
 
-	numbers = calloc(count + 1, sizeof(*numbers));
-	if (!numbers)
+	dt.n = calloc(count + 1, sizeof(*dt.n));
+	if (!dt.n)
 		return (0);
-	arg_counter = 1;
-	index_str = 0;
-	index_nbr = 0;
-	while (arg_counter++ < argc)
+	dt.arg_counter = 1;
+	dt.i_n = 0;
+	while (dt.arg_counter++ < argc)
 	{
-		str = ft_split(argv[arg_counter - 1], ' ');
-		if (!str)
+		dt.i_s = 0;
+		dt.str = ft_split(argv[dt.arg_counter - 1], ' ');
+		if (!dt.str)
 			return (0);
-		while (str[index_str])
+		while (dt.str[dt.i_s])
 		{
-			temp = ft_atol(str[index_str]);
-			if (temp < INT_MIN || temp > INT_MAX)
-				return (free(str[index_str]), free(str), free(numbers), NULL);
+			dt.temp = ft_atol(dt.str[dt.i_s]);
+			if (dt.temp < INT_MIN || dt.temp > INT_MAX)
+				return (free(dt.str[dt.i_s]), free(dt.str), free(dt.n), NULL);
 			else
-				numbers[index_nbr++] = (int) temp;
-			free(str[index_str++]);
+				dt.n[dt.i_n++] = (int) dt.temp;
+			free(dt.str[dt.i_s++]);
 		}
-		free(str);
-		index_str = 0;
+		free(dt.str);
 	}
-	return (numbers);
+	return (dt.n);
 }
 
 void	ft_normalize(int **stacks, int *end)
