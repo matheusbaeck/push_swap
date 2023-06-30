@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 20:13:18 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/06/22 00:49:19 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/06/27 19:01:34 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void	ft_algorythm_push_down(int ***data)
 	int	i;
 
 	size = data[0][2][0];
+	print_data(data);
 	while (ft_cmp_entropy_modifier(data[2][0], data[3][size], size))
 	{
 		i = 0;
@@ -139,7 +140,8 @@ void	ft_algorythm_push_down(int ***data)
 		if (temp > 0)
 			ft_modifier_set_diagonal_one(data, temp);
 		else
-			print_data(data);
+			printf("fail");
+		print_data(data);
 	}
 	i = -1;
 	while (++i < size)
@@ -196,6 +198,6 @@ void	ft_algorythm(int **stacks)
 			ft_do_rotate(data[0], data[0][2], data[1], data[0][0][1]);
 	}
 	ft_do_rotate(data[0], data[0][2], data[1], 1);
-	print_data(data);
+	//  print_data(data);
 	// ft_destroy_data(data);
 }
