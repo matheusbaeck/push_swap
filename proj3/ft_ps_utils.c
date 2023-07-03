@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ps_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:47:11 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/19 22:15:46 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/18 01:42:33 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	ft_arr_sum_abs(int *arr, int size)
 	int sum;
 
 	i = -1;
-	sum = 0;
 	while(++i < size)
 	{
 		sum += ft_abs(arr[i]);

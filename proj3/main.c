@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 07:39:08 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/19 05:33:12 by math42           ###   ########.fr       */
+/*   Updated: 2023/05/14 01:50:03 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	else if (end[0] == 5)
 		ft_algorythm_5n(stacks, 0, end);
 	else if (end[0] <= 499)
-		ft_algorythm(stacks);
+		ft_algorythm_entropy(stacks, end);
 	else
 		ft_algorythm_radix(stacks, end);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: math42 <math42@student.42.fr>              +#+  +:+       +#+         #
+#    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/05/19 05:22:05 by math42           ###   ########.fr        #
+#    Updated: 2023/03/28 22:11:15 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,9 @@ FLAGS = -Wall -Wextra -Werror -c -g -o
 
 LIB_CC = ar rcs
 
-LIB_PATH = ../
+LIB_PATH = /Users/mamagalh/42Projects/\#lib/
 
-HEADER_PATH = ../
+HEADER_PATH = /Users/mamagalh/42Projects/\#header/
 
 SRC = ft_islower.c \
 	ft_isupper.c \
@@ -82,7 +82,7 @@ all: $(NAME) clean
 
 $(NAME): $(OBJ) $(HEADER_NAME)
 	$(LIB_CC) $(NAME) $(OBJ) $(HEADER_NAME)
-	ln -f $(NAME) ../$(NAME)
+	ln -f $(NAME) $(LIB_PATH)$(NAME)
 	ln -f $(HEADER_NAME) $(HEADER_PATH)$(HEADER_NAME)
 
 %.o:%.c
